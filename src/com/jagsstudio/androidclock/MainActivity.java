@@ -16,13 +16,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
 import android.view.Menu;
-<<<<<<< HEAD
-import android.widget.TextView;
-=======
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.TimePicker;
->>>>>>> master
 
 public class MainActivity extends Activity {
 	private Context context;
@@ -106,8 +102,6 @@ public class MainActivity extends Activity {
 			TextView clockTextView = (TextView) findViewById(R.id.textView1);
 			String strAM_PM = (calObject.get(Calendar.AM_PM)==1 ? "PM" : "AM");
 			clockTextView.setText(String.format("%d:%02d:%02d %s", calObject.get(Calendar.HOUR), calObject.get(Calendar.MINUTE), calObject.get(Calendar.SECOND), strAM_PM));
-<<<<<<< HEAD
-=======
 			if (calObject.get(Calendar.HOUR_OF_DAY)==myAlarm.get(Calendar.HOUR_OF_DAY) && calObject.get(Calendar.MINUTE)==myAlarm.get(Calendar.MINUTE) && myAlarmEnabled) fireAlarm();
 		}
 		
@@ -134,7 +128,6 @@ public class MainActivity extends Activity {
             })
 		    .show();
 			myAlarmEnabled = false;
->>>>>>> master
 		}
 	};
 	
