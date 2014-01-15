@@ -120,7 +120,7 @@ public class MainActivity extends Activity {
             .setNegativeButton("Snooze", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
             		myAlarm = Calendar.getInstance();
-            		myAlarm.roll(Calendar.SECOND, Calendar.getInstance().get(Calendar.SECOND)+30);
+            		myAlarm.roll(Calendar.MINUTE, Calendar.getInstance().get(Calendar.MINUTE)+9);
             		myAlarmEnabled = true;
         			if (hasRingtoneSupport) myRingtone.stop();
                     dialog.cancel();
