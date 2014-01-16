@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -27,12 +28,16 @@ public class MainActivity extends Activity {
 	private Timer myTimer;
 	private Ringtone myRingtone;
 	private boolean hasRingtoneSupport;
+	private int snoozeMinutes;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         context = this;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		//Default 10 minute snooze
+		snoozeMinutes = 10;
 		
 		//set alarm ringtone
 		hasRingtoneSupport = false;
@@ -71,6 +76,9 @@ public class MainActivity extends Activity {
 	        case R.id.action_setalarm:
 	            setAlarmClock();
 	            return true;
+	        case R.id.action_snoozetype:
+	        	setSnoozeType();
+	        	return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
@@ -90,6 +98,34 @@ public class MainActivity extends Activity {
         }, hour, minute, false);
         myAlarmPicker.setTitle("Set Alarm");
         myAlarmPicker.show();
+	}
+	
+	private void setSnoozeType(){
+		AlertDialog.Builder b = new Builder(context);
+	    b.setTitle("Choose Snooze Type");
+	    String[] types = {"10 minutes", "15 minutes", "30 minutes", "1 hour"};
+	    b.setItems(types, new DialogInterface.OnClickListener() {
+
+	        @Override
+	        public void onClick(DialogInterface dialog, int which) {
+	            dialog.dismiss();
+	            switch(which){
+	            case 0:
+	            	snoozeMinutes = 10;
+	                break;
+	            case 1:
+	            	snoozeMinutes = 15;
+	                break;
+	            case 2:
+	            	snoozeMinutes = 30;
+	                break;
+	            case 3:
+	            	snoozeMinutes = 60;
+	                break;
+	            }
+	        }
+	    });
+	    b.show();
 	}
 	
 	private void ClockMethod(){
@@ -120,7 +156,7 @@ public class MainActivity extends Activity {
             .setNegativeButton("Snooze", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
             		myAlarm = Calendar.getInstance();
-            		myAlarm.roll(Calendar.MINUTE, Calendar.getInstance().get(Calendar.MINUTE)+9);
+            		myAlarm.roll(Calendar.MINUTE, Calendar.getInstance().get(Calendar.MINUTE)+snoozeMinutes);
             		myAlarmEnabled = true;
         			if (hasRingtoneSupport) myRingtone.stop();
                     dialog.cancel();
