@@ -28,11 +28,8 @@ public class MainActivity extends Activity {
 	private Timer myTimer;
 	private Ringtone myRingtone;
 	private boolean hasRingtoneSupport;
-<<<<<<< HEAD
 	private int snoozeMinutes;
-=======
 	private boolean is24hour;
->>>>>>> origin/date_picker
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +37,10 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-<<<<<<< HEAD
 		//Default 10 minute snooze
 		snoozeMinutes = 10;
-=======
 		//12 or 24 hour
 		is24hour = false;
->>>>>>> origin/date_picker
 		
 		//set alarm ringtone
 		hasRingtoneSupport = false;
@@ -85,13 +79,11 @@ public class MainActivity extends Activity {
 	        case R.id.action_setalarm:
 	            setAlarmClock();
 	            return true;
-<<<<<<< HEAD
 	        case R.id.action_snoozetype:
 	        	setSnoozeType();
-=======
+	        	return true;
 	        case R.id.action_format:
 	        	setTimeFormat();
->>>>>>> origin/date_picker
 	        	return true;
 	        default:
 	            return super.onOptionsItemSelected(item);

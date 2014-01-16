@@ -4,10 +4,7 @@
     <string name="app_name">AndroidClock</string>
     <string name="action_setalarm">Set Alarm</string>
     <string name="hello_world">Hello world!</string>
-<<<<<<< HEAD
     <string name="action_snoozetype">Snooze Type</string>
-=======
     <string name="action_format">Format</string>
->>>>>>> origin/date_picker
 
 </resources>
