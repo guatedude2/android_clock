@@ -4,5 +4,6 @@
     <string name="app_name">AndroidClock</string>
     <string name="action_setalarm">Set Alarm</string>
     <string name="hello_world">Hello world!</string>
+    <string name="action_format">Format</string>
 
 </resources>

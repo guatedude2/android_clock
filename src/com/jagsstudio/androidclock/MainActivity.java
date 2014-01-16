@@ -27,12 +27,16 @@ public class MainActivity extends Activity {
 	private Timer myTimer;
 	private Ringtone myRingtone;
 	private boolean hasRingtoneSupport;
+	private boolean is24hour;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         context = this;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		//12 or 24 hour
+		is24hour = false;
 		
 		//set alarm ringtone
 		hasRingtoneSupport = false;
@@ -71,9 +75,39 @@ public class MainActivity extends Activity {
 	        case R.id.action_setalarm:
 	            setAlarmClock();
 	            return true;
+	        case R.id.action_format:
+	        	setTimeFormat();
+	        	return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
+	}
+	
+	/**
+	 * Display time format dialog
+	 */
+	private void setTimeFormat() {
+		new AlertDialog.Builder(context)
+		    .setTitle("Select Time Format")
+		    .setMessage("Select your format:")
+	        .setCancelable(false)
+	        .setPositiveButton("24 hour", new DialogInterface.OnClickListener() {
+	            public void onClick(DialogInterface dialog, int id) {
+	            	is24hour = true;
+	            	dialog.cancel();
+	            }
+	        })
+	        .setNegativeButton("12 hour", new DialogInterface.OnClickListener() {
+	        	public void onClick(DialogInterface dialog, int id) {
+	        		is24hour = false;
+	        		dialog.cancel();
+	            }
+	        })
+	        .show();
+	}
+	
+	public void setIs24Hour(boolean format) {
+		this.is24hour = format;
 	}
 	
 	private void setAlarmClock(){
@@ -100,8 +134,15 @@ public class MainActivity extends Activity {
 		public void run(){
 			Calendar calObject = Calendar.getInstance();
 			TextView clockTextView = (TextView) findViewById(R.id.textView1);
-			String strAM_PM = (calObject.get(Calendar.AM_PM)==1 ? "PM" : "AM");
-			clockTextView.setText(String.format("%d:%02d:%02d %s", calObject.get(Calendar.HOUR), calObject.get(Calendar.MINUTE), calObject.get(Calendar.SECOND), strAM_PM));
+			
+			if(is24hour) {
+    			clockTextView.setText(String.format("%02d:%02d:%02d", calObject.get(Calendar.HOUR_OF_DAY), calObject.get(Calendar.MINUTE), calObject.get(Calendar.SECOND)));
+			} else {
+				String strAM_PM = (calObject.get(Calendar.AM_PM)==1 ? "PM" : "AM");
+				clockTextView.setText(String.format("%d:%02d:%02d%s", calObject.get(Calendar.HOUR), calObject.get(Calendar.MINUTE), calObject.get(Calendar.SECOND), strAM_PM));
+				Log.d("TextView", clockTextView.getText().toString());
+			}
+			
 			if (calObject.get(Calendar.HOUR_OF_DAY)==myAlarm.get(Calendar.HOUR_OF_DAY) && calObject.get(Calendar.MINUTE)==myAlarm.get(Calendar.MINUTE) && myAlarmEnabled) fireAlarm();
 		}
 		
