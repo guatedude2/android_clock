@@ -10,7 +10,7 @@
     tools:context=".MainActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tvTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -18,18 +18,26 @@
         android:fontFamily="sans-serif-light"
         android:text="00:00"
         android:textColor="#88ffffff"
-        android:textSize="72sp" />
+        android:textSize="128sp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvAmPm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-		android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tvTime"
+        android:layout_centerHorizontal="true"
         android:fontFamily="sans-serif"
         android:text="PM"
         android:textColor="#88ffffff"
-        android:textSize="72sp" />
+        android:textSize="36sp" />
+
+    <ImageView
+        android:id="@+id/ivAlarmOffIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAmPm"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/icon_alarmOff" />
 
     <LinearLayout
         android:layout_width="wrap_content"
