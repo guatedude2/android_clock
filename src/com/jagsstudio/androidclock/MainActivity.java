@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.R;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -168,7 +169,7 @@ public class MainActivity extends Activity {
 	private Runnable Clock_Tick = new Runnable() {
 		public void run(){
 			Calendar calObject = Calendar.getInstance();
-			TextView clockTextView = (TextView) findViewById(R.id.textView1);
+			TextView clockTextView = (TextView) findViewById(R.id.tvTime);
 			
 			if(is24hour) {
     			clockTextView.setText(String.format("%02d:%02d:%02d", calObject.get(Calendar.HOUR_OF_DAY), calObject.get(Calendar.MINUTE), calObject.get(Calendar.SECOND)));
