@@ -2,13 +2,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg1"
+    android:background="@drawable/main_bg_day"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
+<<<<<<< HEAD
+=======
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="120dp"
+        android:fontFamily="sans-serif-light"
+        android:text="00:00:00PM"
+        android:textColor="#88ffffff"
+        android:textSize="72dp" />
+
+    <!-- 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="60dp"
+        android:fontFamily="sans-serif-light"
+        android:text="PM"
+        android:textColor="#88ffffff"
+        android:textSize="36sp" /> 
+        -->
+>>>>>>> origin/graphics
 
     <Button
         android:layout_width="880dp"
