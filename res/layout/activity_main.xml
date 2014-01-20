@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvAmPm"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/icon_alarmOff" />
+        android:src="@drawable/icon_alarm_off" />
 
         <!--  android:layout_below="@+id/ivAlarmOffIcon"-->
     <LinearLayout
